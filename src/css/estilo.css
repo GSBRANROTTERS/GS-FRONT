@@ -41,6 +41,45 @@ header #logo{
     object-fit: cover; /*Ocupa todo o espaço*/
 }
 
+.slideshow-container {
+  max-width: 600px;
+  margin: 50px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.slideshow-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
