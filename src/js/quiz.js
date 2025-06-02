@@ -1,14 +1,17 @@
-document.addEventListener('DOMContentLoaded',()=>{
-    const pergunta = document.getElementById('pergunta');
-    const resposta = document.getElementById('resposta');
-    const proximaPergunta = document.getElementById("proximo");
-    const mensagem = document.getElementById('message');
-    const containerPerguntas = document.getElementById('container-perguntas');
-    const containerResultado = document.getElementById('container-resultado');
-    const listaResultado = document.getElementById('lista-resultado');
-    const reiniciarBotao = document.getElementById('inicio-btn')
+alert("Seja bem-vindo ao questionário! Responda as perguntas abaixo por favor");
 
-    //DECLARANDO O ARRAY DE PERGUNTAS
+document.addEventListener('DOMContentLoaded', () => {
+    const elements = {
+        pergunta: document.getElementById('pergunta'),
+        resposta: document.getElementById('resposta'),
+        proximaPergunta: document.getElementById("proximo"),
+        mensagem: document.getElementById('message'),
+        containerPerguntas: document.getElementById('container-perguntas'),
+        containerResultado: document.getElementById('container-resultado'),
+        listaResultado: document.getElementById('lista-resultado'),
+        reiniciarBotao: document.getElementById('inicio-btn')
+    };
+
     const questoes=[
         "Quais são as medidas imediatas que podemos tomar para ajudar pessoas afetadas por enchentes? ",
         "Como a comunidade pode se organizar para prestar suporte durante e após uma enchente?",
@@ -21,55 +24,58 @@ document.addEventListener('DOMContentLoaded',()=>{
         "Como podemos ajudar na reconstrução e recuperação das áreas afetadas após a enchente?",
         "Que ações educativas podem ser feitas para preparar a população para enfrentar enchentes?",
     ]
-    //DECLARANDOS AS VARIAVEIS
-    let perguntas = 0;
+
+    let perguntaAtual = 0;
     const respostas = [];
 
-    function mostrarPergunta(){
-        if(perguntas <questoes.length){
-            pergunta.textContent =questoes[perguntas];
-            resposta.value='';
-            mensagem.textContent ='';
-        }else{
+    function mostrarPergunta() {
+        elements.pergunta.textContent = questoes[perguntaAtual];
+        elements.resposta.value = '';
+        elements.mensagem.textContent = '';
+        elements.resposta.focus(); // Foca automaticamente no campo de resposta
+    }
+
+    function mostrarResultado() {
+        elements.containerPerguntas.classList.add('hidden');
+        elements.containerResultado.classList.remove('hidden');
+        elements.listaResultado.innerHTML = '';
+
+        questoes.forEach((questao, index) => {
+            const listaItem = document.createElement('li');
+            listaItem.innerHTML = `<strong>${questao}</strong><br> Sua Resposta: <span>${respostas[index]}</span>`;
+            elements.listaResultado.appendChild(listaItem);
+        });
+    }
+
+    function proximaQuestao() {
+        const respostaAtual = elements.resposta.value.trim();
+        if (respostaAtual === '') {
+            elements.mensagem.textContent = "Por favor, digite sua resposta";
+            return;
+        }
+        
+        respostas.push(respostaAtual);
+        perguntaAtual++;
+        
+        if (perguntaAtual < questoes.length) {
+            mostrarPergunta();
+        } else {
             mostrarResultado();
         }
     }
 
-     function mostrarResultado(){
-        containerPerguntas.classList.add('hidden');
-        containerResultado.classList.remove('hidden');
-        listaResultado.innerHTML='';
-
-        questoes.forEach((questoes,index)=>{
-            const listaItem =document.createElement('li');
-            listaItem.innerHTML = `<strong>${questoes}</strong><br>
-            Sua Resposta: <span>${resposta[index]}</span>`
-            listaResultado.appendChild(listaItem);
-        })
-     }
-
-     function nextQuestao(){
-        const respostaAtual =resposta.value.trim();
-        if(respostaAtual ===''){
-            mensagem.textContent ="Por favor , digite sua resposta";
-            return;
-        }
-        respostas.push(respostaAtual);
-        perguntas++;
+    function reiniciarQuiz() {
+        perguntaAtual = 0;
+        respostas.length = 0;
+        elements.containerResultado.classList.add('hidden');
+        elements.containerPerguntas.classList.remove('hidden');
         mostrarPergunta();
+    }
 
-     }
-     function reiniciarQuiz(){
-        perguntas =0;
-        respostas.length =0;
-        containerResultado.classList.add('hidden');
-        containerPerguntas.classList.remove('hidden')
-        mostrarPergunta();
-     }
+    // Configura eventos
+    elements.proximaPergunta.addEventListener('click', proximaQuestao);
+    elements.reiniciarBotao.addEventListener('click', reiniciarQuiz);
 
-     proximaPergunta.addEventListener('click',nextQuestao);
-     reiniciarBotao.addEventListener('click',reiniciarQuiz);
-
-     mostrarPergunta();
-
-})
+    // Inicia o questionário
+    mostrarPergunta();
+});
