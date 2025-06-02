@@ -1,13 +1,13 @@
 // Array de imagens
 let imagens = [
-  'src/assets/imagem1.jpg',
-  'src/assets/imagem2.jpg',
-  'src/assets/imagem3.jpg'
+  'src/assets/graficodecustos.jpg',
+  'src/assets/alagamento.jpg',
+  'src/assets/graficomortes.jpg'
 ];
 
 // Variáveis
 let i = 0;
-let tempo = 2000; // 2 segundos
+let tempo = 3000; // 4 segundos
 
 // Função de slideshow
 function slideshow() {
