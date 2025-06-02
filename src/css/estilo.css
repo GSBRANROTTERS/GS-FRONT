@@ -28,9 +28,9 @@ header nav ul li a{
 }
 
 header nav ul li a:hover{
-    color:goldenrod;
+    color:rgb(15, 216, 15);
     text-decoration: underline;
-    border: 2px solid #ccc;
+    font-size: large;
 }
 header #logo{
     color: white
