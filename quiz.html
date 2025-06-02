@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solução Contra Enchentes - BrainRotters</title>
+  <link rel="stylesheet" href="./src/css/estilo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1 id="logo">Quiz</h1>
+    <nav>
+      <ul class="menu">
+        <li><a href="./index.html">Problemas</a></li>
+        <li><a href="./tecnologia.html">Tecnologias</a></li>
+        <li><a href="./objetivos.html">Objetivos</a></li>
+        <li><a href="./publico.html">Público-alvo</a></li>
+        <li><a href="./beneficios.html">Benefícios</a></li>
+        <li><a href="./quiz.html">Quiz</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="container-quiz">
+        <div class="quiz">
+            <h1>Você sabe como ajudar em situações de enchentes?</h1>
+            <section id="container-perguntas">
+                <h2 id="pergunta">Quais são as medidas imediatas que podemos tomar para ajudar pessoas afetadas por enchentes? </h2>
+                <div id="container-respostas">
+                    <input type="text" id="resposta" placeholder="Digite sua resposta">
+                </div>
+                <button id="proximo">Próxima Pergunta</button>
+                <p id="message"></p>
+            </section>
+            <section id="container-resultado" class="hidden">
+                <h2>Resultado do quiz</h2>
+                <ul id="lista-resultado"></ul>
+                <button id="incio-btn">Reiniciar </button>
+            </section>
+        </div>
+
+    </main>
+
+ <script src="../js/quiz.js"></script>   
+</body>
+</html>
