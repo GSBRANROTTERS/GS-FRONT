@@ -130,10 +130,9 @@ footer {
   margin-top: 2rem;
 }
 
-@media (max-width: 768px) {
-  .menu {
+@media (width <= 1024px) {
+  #container2 {
     flex-direction: column;
-    gap: 0.5rem;
   }
 
   main {
@@ -259,4 +258,50 @@ footer {
 
 #inicio-btn:hover {
     background-color: #1e7e34;
+}
+
+
+/* Para telas até 768px (tablets) */
+@media (max-width: 768px) {
+  header {
+    justify-content: center;
+  }
+  #logo {
+    margin-bottom: 10px;
+  }
+  nav ul.menu {
+    justify-content: center;
+    gap: 10px;
+  }
+  main {
+    margin: 20px 15px;
+    padding: 0 10px;
+  }
+}
+
+/* Para telas até 480px (celulares) */
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav ul.menu {
+    flex-direction: column;
+    width: 100%;
+  }
+  nav ul.menu li {
+    width: 100%;
+  }
+  nav ul.menu li a {
+    padding: 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  main {
+    padding: 0 10px;
+    margin: 15px 5px;
+  }
+  main section h2 {
+    font-size: 1.5rem;
+  }
 }
